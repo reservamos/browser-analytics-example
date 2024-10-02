@@ -1,4 +1,4 @@
 # esm
-esm/node_modules
-esm/dist
-esm/.env
+node_modules
+dist
+.env
