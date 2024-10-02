@@ -9,7 +9,7 @@ const config = {
 analytics.init(config);
 
 window.addEventListener("Tracker Ready", async () => {
-  console.log("Tracker Ready: Module Imports + TS");
+  console.log("Tracker Ready: Require Imports");
 
   analytics.track.test();
 
