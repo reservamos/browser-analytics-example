@@ -15,6 +15,10 @@ import {
   trackInterestInHomeExample,
   trackInterestInHomeWithErrors
 } from "./examples/interestInHome";
+import {
+  trackInterestInSearchExample,
+  trackInterestInSearchWithErrors
+} from "./examples/interestInSearch";
 
 const config: InitConfig = {
   mixpanelToken: import.meta.env.VITE_ANALYTICS_MIXPANEL_TOKEN || "",
@@ -39,6 +43,9 @@ window.addEventListener("Tracker Ready", async () => {
 
   //Interest in Home
   trackInterestInHomeExample();
+
+  //Interest in Search
+  trackInterestInSearchExample();
 
   // Identifying a user
   await analytics.identify(
@@ -81,4 +88,7 @@ window.addEventListener("Tracker Ready", async () => {
 
   // Failing to Interest in Home event
   trackInterestInHomeWithErrors();
+
+  // Failing to Interest in Search event
+  trackInterestInSearchWithErrors();
 });
