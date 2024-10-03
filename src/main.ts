@@ -3,6 +3,10 @@ import {
   trackSearchEventExample,
   trackSearchWithErrors
 } from "./examples/search";
+import {
+  trackViewResultsExample,
+  trackViewResultsWithErrors
+} from "./examples/viewResults";
 
 const config: InitConfig = {
   mixpanelToken: import.meta.env.VITE_ANALYTICS_MIXPANEL_TOKEN || "",
@@ -20,19 +24,8 @@ window.addEventListener("Tracker Ready", async () => {
   trackSearchEventExample();
 
   //View Results
-  analytics.track.viewResults({
-    "Bus count": 2,
-    Departure: "2024-11-02",
-    "Departure Delta": 1,
-    Destination: "test",
-    "User Fingerprint": "123d12",
-    Origin: "test origin",
-    "Origin Terminal": "test origin terminal",
-    "Has Frequent Buses": true,
-    Route: "acb - def",
-    product: "app",
-    "Destination Terminal": "abc"
-  });
+  trackViewResultsExample();
+
   //Seat Change
   analytics.track.seatChange({
     Arrival: "2024-10-21",
@@ -86,19 +79,7 @@ window.addEventListener("Tracker Ready", async () => {
   // Failing to search event
   trackSearchWithErrors();
   // Failing to view results event
-  try {
-    analytics.track.viewResults({
-      Departure: "22/10/2024", // Invalid date format, should be YYYY-MM-DD
-      "Departure Delta": 1,
-      Destination: "test",
-      Origin: "test origin",
-      "Origin Terminal": "test origin terminal",
-      Route: "acb - def"
-      // Missing required fields: "Bus count", "User Fingerprint", "Has Frequent Buses", product
-    });
-  } catch (error) {
-    console.log("Error View Results event", error);
-  }
+  trackViewResultsWithErrors();
   // Failing to Seat Change event
   try {
     analytics.track.seatChange({
