@@ -11,6 +11,10 @@ import {
   trackSeatChangeExample,
   trackSeatChangeWithErrors
 } from "./examples/seatChange";
+import {
+  trackInterestInHomeExample,
+  trackInterestInHomeWithErrors
+} from "./examples/interestInHome";
 
 const config: InitConfig = {
   mixpanelToken: import.meta.env.VITE_ANALYTICS_MIXPANEL_TOKEN || "",
@@ -33,10 +37,9 @@ window.addEventListener("Tracker Ready", async () => {
   //Seat Change
   trackSeatChangeExample();
 
-  //Seat Change
-  analytics.track.interestInHome({
-    product: "web"
-  });
+  //Interest in Home
+  trackInterestInHomeExample();
+
   // Identifying a user
   await analytics.identify(
     "some-user-id", // You can choose any identifier you want, it will be the main key to identify the user,
@@ -69,16 +72,13 @@ window.addEventListener("Tracker Ready", async () => {
   }
   // Failing to search event
   trackSearchWithErrors();
+
   // Failing to view results event
   trackViewResultsWithErrors();
+
   // Failing to Seat Change event
   trackSeatChangeWithErrors();
 
-  try {
-    analytics.track.interestInHome({
-      // Missing required field: product
-    });
-  } catch (error) {
-    console.log("Error Interest in home event", error);
-  }
+  // Failing to Interest in Home event
+  trackInterestInHomeWithErrors();
 });
