@@ -7,6 +7,10 @@ import {
   trackViewResultsExample,
   trackViewResultsWithErrors
 } from "./examples/viewResults";
+import {
+  trackSeatChangeExample,
+  trackSeatChangeWithErrors
+} from "./examples/seatChange";
 
 const config: InitConfig = {
   mixpanelToken: import.meta.env.VITE_ANALYTICS_MIXPANEL_TOKEN || "",
@@ -27,21 +31,8 @@ window.addEventListener("Tracker Ready", async () => {
   trackViewResultsExample();
 
   //Seat Change
-  analytics.track.seatChange({
-    Arrival: "2024-10-21",
-    Departure: "2024-10-21",
-    Route: "route 1",
-    Destination: "test Destinaion",
-    "Destination Terminal": "terminal 1",
-    Line: "line 1",
-    Origin: "test origin",
-    "Origin Terminal": "Origin terminal",
-    Tickets: 1,
-    Way: "Departure",
-    product: "web",
-    Price: 100,
-    Transporter: "Test"
-  });
+  trackSeatChangeExample();
+
   //Seat Change
   analytics.track.interestInHome({
     product: "web"
@@ -81,24 +72,8 @@ window.addEventListener("Tracker Ready", async () => {
   // Failing to view results event
   trackViewResultsWithErrors();
   // Failing to Seat Change event
-  try {
-    analytics.track.seatChange({
-      Arrival: "2024-10-21",
-      Departure: "2025", // Invalid date format, should be YYYY-MM-DD
-      Route: "route 1",
-      Destination: "test Destinaion",
-      "Destination Terminal": "terminal 1",
-      "Origin Terminal": "", // Empty string, should be a valid terminal
-      Tickets: 1,
-      Way: "return", // Invalid value, should be "Departure" or "Arrival"
-      product: "web",
-      Price: "100", // Should be a number, not a string
-      Transporter: "Test"
-      // Missing required field: Origin, Line
-    });
-  } catch (error) {
-    console.log("Error Seat Change event", error);
-  }
+  trackSeatChangeWithErrors();
+
   try {
     analytics.track.interestInHome({
       // Missing required field: product
