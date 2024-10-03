@@ -1,9 +1,13 @@
 import analytics, { InitConfig } from "@reservamos/browser-analytics";
+import {
+  trackSearchEventExample,
+  trackSearchWithErrors
+} from "./examples/search";
 
 const config: InitConfig = {
   mixpanelToken: import.meta.env.VITE_ANALYTICS_MIXPANEL_TOKEN || "",
   identificationKey: import.meta.env.VITE_ANALYTICS_IDENTIFICATION_KEY || "",
-  debug: import.meta.env.VITE_ANALYTICS_DEBUG === "true",
+  debug: import.meta.env.VITE_ANALYTICS_DEBUG === "true"
 };
 
 analytics.init(config);
@@ -13,17 +17,8 @@ window.addEventListener("Tracker Ready", async () => {
 
   analytics.track.test();
   //Search Event
-  analytics.track.search({
-    Departure: "2024-11-02",
-    "Departure Delta": 1,
-    Destination: "test",
-    Origin: "test origin",
-    "Origin Terminal": "test origin terminal",
-    Passengers: 1,
-    Route: "acb - def",
-    product: "web",
-    "Destination Terminal": "abc",
-  });
+  trackSearchEventExample();
+
   //View Results
   analytics.track.viewResults({
     "Bus count": 2,
@@ -36,7 +31,7 @@ window.addEventListener("Tracker Ready", async () => {
     "Has Frequent Buses": true,
     Route: "acb - def",
     product: "app",
-    "Destination Terminal": "abc",
+    "Destination Terminal": "abc"
   });
   //Seat Change
   analytics.track.seatChange({
@@ -52,11 +47,11 @@ window.addEventListener("Tracker Ready", async () => {
     Way: "Departure",
     product: "web",
     Price: 100,
-    Transporter: "Test",
+    Transporter: "Test"
   });
   //Seat Change
   analytics.track.interestInHome({
-    product: "web",
+    product: "web"
   });
   // Identifying a user
   await analytics.identify(
@@ -69,7 +64,7 @@ window.addEventListener("Tracker Ready", async () => {
       phone: "123456789",
 
       // Custom properties
-      salesforceId: "123456789", // You can add any custom property you want, I.E. any other identifier
+      salesforceId: "123456789" // You can add any custom property you want, I.E. any other identifier
     }
   );
 
@@ -82,28 +77,14 @@ window.addEventListener("Tracker Ready", async () => {
         firstName: "John",
         lastName: "Doe",
         email: "bad-email", // This email is invalid
-        phone: "123456789",
+        phone: "123456789"
       }
     );
   } catch (error) {
     console.log("Error identifying user", error);
   }
   // Failing to search event
-  try {
-    analytics.track.search({
-      Departure: "22/10/2024", // Invalid date format, should be YYYY-MM-DD
-      "Departure Delta": 1.5, // Should be an integer
-      Destination: "test",
-      Origin: "test origin",
-      "Origin Terminal": "test origin terminal",
-      Passengers: 1,
-      Route: "acb - def",
-      // Missing required field: product
-    });
-  } catch (error) {
-    console.log("Error search event", error);
-  }
-
+  trackSearchWithErrors();
   // Failing to view results event
   try {
     analytics.track.viewResults({
@@ -112,7 +93,7 @@ window.addEventListener("Tracker Ready", async () => {
       Destination: "test",
       Origin: "test origin",
       "Origin Terminal": "test origin terminal",
-      Route: "acb - def",
+      Route: "acb - def"
       // Missing required fields: "Bus count", "User Fingerprint", "Has Frequent Buses", product
     });
   } catch (error) {
@@ -131,7 +112,7 @@ window.addEventListener("Tracker Ready", async () => {
       Way: "return", // Invalid value, should be "Departure" or "Arrival"
       product: "web",
       Price: "100", // Should be a number, not a string
-      Transporter: "Test",
+      Transporter: "Test"
       // Missing required field: Origin, Line
     });
   } catch (error) {
