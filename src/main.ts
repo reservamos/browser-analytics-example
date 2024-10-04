@@ -29,6 +29,14 @@ import {
   trackPickedDepartureEventExample,
   trackPickedDepartureWithErrors,
 } from "./examples/pickedDeparture";
+import {
+  trackPassengersCreatedEventExample,
+  trackPassengersCreatedWithErrors,
+} from "./examples/passengersCreated";
+import {
+  trackPaymentAttemptEventExample,
+  trackPaymentAttemptWithErrors,
+} from "./examples/paymentAttempt";
 
 const config: InitConfig = {
   mixpanelToken: import.meta.env.VITE_ANALYTICS_MIXPANEL_TOKEN || "",
@@ -63,6 +71,12 @@ window.addEventListener("Tracker Ready", async () => {
   //Purchase Attempt
   trackPurchaseAttemptEventExample();
 
+  //Passengers Created
+  trackPassengersCreatedEventExample();
+
+  //Payment Attempt
+  trackPaymentAttemptEventExample();
+
   //Picked Departure
   trackPickedDepartureEventExample();
 
@@ -89,4 +103,10 @@ window.addEventListener("Tracker Ready", async () => {
 
   // Failing to Interest in Search event
   trackInterestInSearchWithErrors();
+
+  // Failing to Passengers Created
+  trackPassengersCreatedWithErrors();
+
+  // Failing to Payment Attempt
+  trackPaymentAttemptWithErrors();
 });
