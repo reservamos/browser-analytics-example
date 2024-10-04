@@ -14,6 +14,6 @@
     "vite-plugin-require": "^1.2.14"
   },
   "dependencies": {
-    "@reservamos/browser-analytics": "0.1.4-alpha.10"
+    "@reservamos/browser-analytics": "0.1.4-alpha.11"
   }
 }
