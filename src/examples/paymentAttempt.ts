@@ -2,23 +2,56 @@ import analytics, { PaymentAttemptProps } from "@reservamos/browser-analytics";
 
 export function trackPaymentAttemptEventExample() {
   const paymentAttemptProps: PaymentAttemptProps = {
-    "Departure Arrival": "2024-10-12",
-    "Departure Destination": "New York",
-    "Departure Destination Terminal": "Terminal 1",
-    "Departure Line": "Line 1",
-    "Departure Origin": "Boston",
-    "Departure Origin Terminal": "Terminal 2",
-    "Departure Price": 200,
-    "Departure Route": "BOS-NYC",
-    "Departure Stops": 0,
-    "Departure Time": "2024-10-12T08:00:00",
-    "Payment Type": "card",
-    "Departure Transporter": "Greyhound",
-    "Passenger Count": 1,
-    "Recommended Trip": false,
-    Routes: 1,
-    Total: 200,
+    "Passenger Count": 2,
+    Total: 520,
     product: "web",
+    "Trip Count": 2,
+    Trips: [
+      {
+        "Departure Arrival": "2024-10-12",
+        "Departure Destination": "New York",
+        "Departure Destination Terminal": "JFK Terminal 4",
+        "Departure Line": "AA100",
+        "Departure Origin": "Los Angeles",
+        "Departure Origin Terminal": "LAX Terminal 5",
+        "Departure Price": 250,
+        "Departure Route": "LAX-JFK",
+        "Departure Stops": 1,
+        "Departure Time": "2024-10-12T08:00:00",
+        "Departure Transport Type": "Airplane",
+        "Departure Transporter": "American Airlines",
+        "Recommended Trip": false,
+        "Recommended Trip Type": "popular" // optional value
+      },
+      {
+        "Departure Arrival": "2024-10-15",
+        "Departure Destination": "Los Angeles",
+        "Departure Destination Terminal": "LAX Terminal 5",
+        "Departure Line": "DL200",
+        "Departure Origin": "New York",
+        "Departure Origin Terminal": "JFK Terminal 2",
+        "Departure Price": 270,
+        "Departure Route": "JFK-LAX",
+        "Departure Stops": 1,
+        "Departure Time": "2024-10-15T14:30:00",
+        "Departure Transport Type": "Airplane",
+        "Departure Transporter": "Delta Airlines",
+        "Recommended Trip": false,
+        // IMPORTANT: Return properties are optional and can be omitted if not needed
+        "Return Arrival": "2024-10-20",
+        "Return Destination": "New York",
+        "Return Destination Terminal": "JFK Terminal 2",
+        "Return Line": "AA300",
+        "Return Origin": "Los Angeles",
+        "Return Origin Terminal": "LAX Terminal 5",
+        "Return Price": 280,
+        "Return Route": "LAX-JFK",
+        "Return Time": "2024-10-20T10:00:00",
+        "Return Transport Type": "Airplane",
+        "Return Transporter": "American Airlines"
+      }
+    ],
+    "Payment Type": "card"
   };
 
   analytics.track.paymentAttempt(paymentAttemptProps);
@@ -27,23 +60,55 @@ export function trackPaymentAttemptEventExample() {
 
 export function trackPaymentAttemptWithErrors() {
   const paymentAttemptProps: PaymentAttemptProps = {
-    "Departure Arrival": "BAD DATE FORMATE", // Error: Incorrect date format
-    "Departure Destination": "New York",
-    "Departure Destination Terminal": "Terminal 1",
-    "Departure Line": "Line 1",
-    "Departure Origin": "Boston",
-    "Departure Origin Terminal": "Terminal 2",
-    "Departure Price": 200,
-    "Departure Route": "BOS-NYC",
-    "Departure Stops": 0,
-    "Departure Time": "2024-10-12T08:00:00",
-    "Payment Type": "card",
-    "Departure Transporter": "Greyhound",
-    "Passenger Count": 1,
-    "Recommended Trip": false,
-    Routes: 1,
-    Total: 200,
-    product: "desktop", // Error: Invalid product value
+    "Passenger Count": "2", // Error: Should be a number, not a string
+    Total: "520", // Error: Should be a number, not a string
+    product: "desktop", // Error: Invalid product value (should be "web" or another valid option)
+    "Trip Count": 2,
+    Trips: [
+      {
+        "Departure Arrival": "BAD DATE FORMAT", // Error: Incorrect date format
+        "Departure Destination": "New York",
+        "Departure Destination Terminal": "Terminal 1",
+        "Departure Line": 10, // Error: Should be a string, not a number
+        "Departure Origin": "Line 2",
+        "Departure Origin Terminal": "Terminal 2",
+        "Departure Price": "250", // Error: Should be a number, not a string
+        "Departure Route": "Route 1",
+        "Departure Stops": "1", // Error: Should be a number, not a string
+        "Departure Time": "2024-10-13", // Error: Missing time component
+        "Departure Transport Type": "Transport type 1",
+        "Departure Transporter": "Transporter 1",
+        "Recommended Trip": "yes" // Error: Should be a boolean, not a string
+      },
+      {
+        "Departure Arrival": "2024-10-15",
+        "Departure Destination": "Los Angeles",
+        "Departure Destination Terminal": "LAX Terminal 5",
+        "Departure Line": "DL200",
+        "Departure Origin": "New York",
+        "Departure Origin Terminal": "JFK Terminal 2",
+        "Departure Price": 270,
+        "Departure Route": "JFK-LAX",
+        "Departure Stops": 1,
+        "Departure Time": "2024-10-15T14:30:00",
+        "Departure Transport Type": "Airplane",
+        "Departure Transporter": "Delta Airlines",
+        "Recommended Trip": false,
+        "Return Arrival": "INVALID DATE", // Error: Invalid date format
+        "Return Destination": "New York",
+        "Return Destination Terminal": "JFK Terminal 2",
+        "Return Line": "AA300",
+        "Return Origin": "Los Angeles",
+        "Return Origin Terminal": "LAX Terminal 5",
+        "Return Price": "280", // Error: Should be a number, not a string
+        "Return Route": "LAX-JFK",
+        "Return Stops": "0", // Error: Should be a number, not a string
+        "Return Time": "2024-10-20", // Error: Missing time component
+        "Return Transport Type": "Airplane",
+        "Return Transporter": "American Airlines"
+      }
+    ],
+    "Payment Type": "invalid_payment_type" // Error: Invalid payment type
   };
 
   console.log("paymentAttempt Event with Errors");
