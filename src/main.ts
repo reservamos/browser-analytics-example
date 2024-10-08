@@ -1,47 +1,47 @@
 import analytics, { InitConfig } from "@reservamos/browser-analytics";
 import {
   trackSearchEventExample,
-  trackSearchWithErrors,
+  trackSearchWithErrors
 } from "./examples/search";
 import {
   trackViewResultsExample,
-  trackViewResultsWithErrors,
+  trackViewResultsWithErrors
 } from "./examples/viewResults";
 import {
   trackSeatChangeExample,
-  trackSeatChangeWithErrors,
+  trackSeatChangeWithErrors
 } from "./examples/seatChange";
 import {
   trackInterestInHomeExample,
-  trackInterestInHomeWithErrors,
+  trackInterestInHomeWithErrors
 } from "./examples/interestInHome";
 import {
   trackInterestInSearchExample,
-  trackInterestInSearchWithErrors,
+  trackInterestInSearchWithErrors
 } from "./examples/interestInSearch";
 
 import {
   trackPurchaseAttemptEventExample,
-  trackPurchaseAttemptWithErrors,
+  trackPurchaseAttemptWithErrors
 } from "./examples/purchaseAttempt";
 import { identifyExample, identifyWithErrors } from "./examples/identify";
 import {
   trackPickedDepartureEventExample,
-  trackPickedDepartureWithErrors,
+  trackPickedDepartureWithErrors
 } from "./examples/pickedDeparture";
 import {
   trackPassengersCreatedEventExample,
-  trackPassengersCreatedWithErrors,
+  trackPassengersCreatedWithErrors
 } from "./examples/passengersCreated";
 import {
   trackPaymentAttemptEventExample,
-  trackPaymentAttemptWithErrors,
+  trackPaymentAttemptWithErrors
 } from "./examples/paymentAttempt";
 
 const config: InitConfig = {
   mixpanelToken: import.meta.env.VITE_ANALYTICS_MIXPANEL_TOKEN || "",
   identificationKey: import.meta.env.VITE_ANALYTICS_IDENTIFICATION_KEY || "",
-  debug: import.meta.env.VITE_ANALYTICS_DEBUG === "true",
+  debug: import.meta.env.VITE_ANALYTICS_DEBUG === "true"
 };
 
 analytics.init(config);
@@ -49,7 +49,6 @@ analytics.init(config);
 window.addEventListener("Tracker Ready", async () => {
   console.log("Tracker Ready: Module Imports + TS");
 
-  analytics.track.test();
   //Search Event
   trackSearchEventExample();
 
