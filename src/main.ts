@@ -39,6 +39,7 @@ import {
 } from "./examples/paymentAttempt";
 import { getFingerprintIdExample } from "./examples/getFingerprintId";
 import { getDistinctIdExample } from "./examples/getDistinctId";
+import { customEventExample } from "./examples/customEvent";
 
 const config: InitConfig = {
   mixpanelToken: import.meta.env.VITE_ANALYTICS_MIXPANEL_TOKEN || "",
@@ -86,6 +87,9 @@ window.addEventListener("Tracker Ready", async () => {
 
   //Picked Departure
   trackPickedDepartureEventExample();
+
+  // custom event example
+  customEventExample();
 
   //Failing to Picked Departure
   trackPickedDepartureWithErrors();
