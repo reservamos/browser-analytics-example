@@ -11,10 +11,15 @@ export function trackViewResultsExample() {
     "Has Frequent Buses": true,
     Route: "acb - def",
     product: "app",
-    "Destination Terminal": "abc"
+    "Destination Terminal": "abc",
   };
 
-  analytics.track.viewResults(viewResultsProps);
+  const eventMetadata = {
+    "Metadata Property 1": "Metadata Value 1",
+    "Metadata Property 2": "Metadata Value 2",
+  };
+
+  analytics.track.viewResults(viewResultsProps, eventMetadata);
   console.log("View Results Event Tracked");
 }
 
@@ -29,7 +34,7 @@ export function trackViewResultsWithErrors() {
     "Has Frequent Buses": true,
     Route: "", // Empty Route
     product: "app",
-    "Destination Terminal": "abc"
+    "Destination Terminal": "abc",
   };
 
   console.log("View Results Event with Errors");

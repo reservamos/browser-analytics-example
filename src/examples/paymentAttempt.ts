@@ -21,7 +21,7 @@ export function trackPaymentAttemptEventExample() {
         "Departure Transport Type": "Airplane",
         "Departure Transporter": "American Airlines",
         "Recommended Trip": false,
-        "Recommended Trip Type": "popular" // optional value
+        "Recommended Trip Type": "popular", // optional value
       },
       {
         "Departure Arrival": "2024-10-15",
@@ -48,13 +48,18 @@ export function trackPaymentAttemptEventExample() {
         "Return Route": "LAX-JFK",
         "Return Time": "2024-10-20T10:00:00",
         "Return Transport Type": "Airplane",
-        "Return Transporter": "American Airlines"
-      }
+        "Return Transporter": "American Airlines",
+      },
     ],
-    "Payment Type": "card"
+    "Payment Type": "card",
   };
 
-  analytics.track.paymentAttempt(paymentAttemptProps);
+  const eventMetadata = {
+    "Metadata Property 1": "Metadata Value 1",
+    "Metadata Property 2": "Metadata Value 2",
+  };
+
+  analytics.track.paymentAttempt(paymentAttemptProps, eventMetadata);
   console.log("paymentAttempt Event Tracked");
 }
 
@@ -78,7 +83,7 @@ export function trackPaymentAttemptWithErrors() {
         "Departure Time": "2024-10-13", // Error: Missing time component
         "Departure Transport Type": "Transport type 1",
         "Departure Transporter": "Transporter 1",
-        "Recommended Trip": "yes" // Error: Should be a boolean, not a string
+        "Recommended Trip": "yes", // Error: Should be a boolean, not a string
       },
       {
         "Departure Arrival": "2024-10-15",
@@ -105,10 +110,10 @@ export function trackPaymentAttemptWithErrors() {
         "Return Stops": "0", // Error: Should be a number, not a string
         "Return Time": "2024-10-20", // Error: Missing time component
         "Return Transport Type": "Airplane",
-        "Return Transporter": "American Airlines"
-      }
+        "Return Transporter": "American Airlines",
+      },
     ],
-    "Payment Type": "invalid_payment_type" // Error: Invalid payment type
+    "Payment Type": "invalid_payment_type", // Error: Invalid payment type
   };
 
   console.log("paymentAttempt Event with Errors");

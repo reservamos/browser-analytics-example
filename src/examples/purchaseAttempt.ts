@@ -21,7 +21,7 @@ export function trackPurchaseAttemptEventExample() {
         "Departure Transport Type": "Airplane",
         "Departure Transporter": "American Airlines",
         "Recommended Trip": false,
-        "Recommended Trip Type": "popular" // optional value
+        "Recommended Trip Type": "popular", // optional value
       },
       {
         "Departure Arrival": "2024-10-15",
@@ -48,12 +48,17 @@ export function trackPurchaseAttemptEventExample() {
         "Return Route": "LAX-JFK",
         "Return Time": "2024-10-20T10:00:00",
         "Return Transport Type": "Airplane",
-        "Return Transporter": "American Airlines"
-      }
-    ]
+        "Return Transporter": "American Airlines",
+      },
+    ],
   };
 
-  analytics.track.purchaseAttempt(PurchaseAttemptProps);
+  const eventMetadata = {
+    "Metadata Property 1": "Metadata Value 1",
+    "Metadata Property 2": "Metadata Value 2",
+  };
+
+  analytics.track.purchaseAttempt(PurchaseAttemptProps, eventMetadata);
   console.log("purchaseAttempt Event Tracked");
 }
 
@@ -79,7 +84,7 @@ export function trackPurchaseAttemptWithErrors() {
         "Departure Time": "2024-10-13", // Error: Missing time component
         "Departure Transport Type": "Transport type 1",
         "Departure Transporter": "Transporter 1",
-        "Recommended Trip": "yes" // Error: Should be a boolean, not a string
+        "Recommended Trip": "yes", // Error: Should be a boolean, not a string
       },
       {
         "Departure Arrival": "2024-10-15",
@@ -106,9 +111,9 @@ export function trackPurchaseAttemptWithErrors() {
         "Return Stops": "0", // Error: Should be a number, not a string
         "Return Time": "2024-10-20", // Error: Missing time component
         "Return Transport Type": "Airplane",
-        "Return Transporter": "American Airlines"
-      }
-    ]
+        "Return Transporter": "American Airlines",
+      },
+    ],
   };
 
   console.log("purchaseAttempt Event with Errors");

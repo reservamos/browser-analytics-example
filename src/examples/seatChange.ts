@@ -14,10 +14,15 @@ export function trackSeatChangeExample() {
     Way: "Departure",
     product: "web",
     Price: 100,
-    Transporter: "Test"
+    Transporter: "Test",
   };
 
-  analytics.track.seatChange(seatChangeProps);
+  const eventMetadata = {
+    "Metadata Property 1": "Metadata Value 1",
+    "Metadata Property 2": "Metadata Value 2",
+  };
+
+  analytics.track.seatChange(seatChangeProps, eventMetadata);
   console.log("Seat Change Event Tracked");
 }
 
@@ -35,7 +40,7 @@ export function trackSeatChangeWithErrors() {
     Way: "Departure",
     product: "web",
     Price: 100,
-    Transporter: "Test"
+    Transporter: "Test",
   };
 
   console.log("Seat Change Event with Errors");

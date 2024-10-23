@@ -10,10 +10,15 @@ export function trackSearchEventExample() {
     Passengers: 1,
     Route: "acb - def",
     product: "web",
-    "Destination Terminal": "abc"
+    "Destination Terminal": "abc",
   };
 
-  analytics.track.search(searchProps);
+  const eventMetadata = {
+    "Metadata Property 1": "Metadata Value 1",
+    "Metadata Property 2": "Metadata Value 2",
+  };
+
+  analytics.track.search(searchProps, eventMetadata);
   console.log("Search Event Tracked");
 }
 
@@ -27,7 +32,7 @@ export function trackSearchWithErrors() {
     Passengers: 1,
     Route: "acb - def",
     product: "web",
-    "Destination Terminal": "abc"
+    "Destination Terminal": "abc",
   };
 
   console.log("Search Event with Errors");

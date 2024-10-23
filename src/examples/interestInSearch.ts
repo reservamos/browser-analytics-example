@@ -1,13 +1,18 @@
 import analytics, {
-  InterestInSearchProps
+  InterestInSearchProps,
 } from "@reservamos/browser-analytics";
 
 export function trackInterestInSearchExample() {
   const interestInSearchProps: InterestInSearchProps = {
-    product: "web"
+    product: "web",
   };
 
-  analytics.track.interestInSearch(interestInSearchProps);
+  const eventMetadata = {
+    "Metadata Property 1": "Metadata Value 1",
+    "Metadata Property 2": "Metadata Value 2",
+  };
+
+  analytics.track.interestInSearch(interestInSearchProps, eventMetadata);
   console.log("Interest In Search Event Tracked");
 }
 

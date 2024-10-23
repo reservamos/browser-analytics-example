@@ -20,7 +20,12 @@ export function trackPickedDepartureEventExample() {
     "Recommended Trip Type": "popular",
   };
 
-  analytics.track.pickedDeparture(PickedDepartureProps);
+  const eventMetadata = {
+    "Metadata Property 1": "Metadata Value 1",
+    "Metadata Property 2": "Metadata Value 2",
+  };
+
+  analytics.track.pickedDeparture(PickedDepartureProps, eventMetadata);
   console.log("pickedDeparture Event Tracked");
 }
 
