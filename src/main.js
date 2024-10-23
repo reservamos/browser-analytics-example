@@ -11,7 +11,6 @@ analytics.init(config);
 window.addEventListener("Tracker Ready", async () => {
   console.log("Tracker Ready: Require Imports");
 
-  analytics.track.test();
   //Search Event
   analytics.track.search({
     Departure: "2024-11-02",
