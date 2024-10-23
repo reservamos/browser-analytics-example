@@ -10,8 +10,10 @@ export function identifyExample() {
       email: "example@example.com",
       phone: "123456789",
 
-      // Custom properties
-      salesforceId: "123456789" // You can add any custom property you want, I.E. any other identifier
+      // Custom properties - There is no limit to the number of properties you can add
+      salesforceId: "123456789", // You can add any custom property you want, I.E. any other identifier
+      CPF: "123456789", // You can add any custom indentifier available in your system,
+      RJ: "123456789" // You can add any custom indentifier available in your system,
     }
   );
   console.log("User Identified");
