@@ -18,6 +18,8 @@ export function trackPickedDepartureEventExample() {
     product: "web",
     "Recommended Trip": true,
     "Recommended Trip Type": "popular",
+    "Bus Type": "Leito",
+    "Trip Type": "Simple"
   };
 
   analytics.track.pickedDeparture(PickedDepartureProps);
@@ -41,6 +43,8 @@ export function trackPickedDepartureWithErrors() {
     Transporter: "Test",
     product: "web",
     "Recommended Trip": false,
+    "Bus Type": "Leito",
+    "Trip Type": "Simple"
   };
 
   console.log("pickedDeparture Event with Errors");
