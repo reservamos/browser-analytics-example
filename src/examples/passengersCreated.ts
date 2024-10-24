@@ -52,10 +52,22 @@ export function trackPassengersCreatedEventExample() {
         "Return Transport Type": "Airplane",
         "Return Transporter": "American Airlines"
       }
+    ],
+    Passengers: [
+      {
+        "Passenger Name": "John Doe",
+        "Passenger Document Type": "CPF",
+        "Passenger Document Id": "123456789"
+      }
     ]
   };
 
-  analytics.track.passengersCreated(passengersCreatedProps);
+  const eventMetadata = {
+    "Metadata Property 1": "Metadata Value 1",
+    "Metadata Property 2": "Metadata Value 2"
+  };
+
+  analytics.track.passengersCreated(passengersCreatedProps, eventMetadata);
   console.log("passengersCreated Event Tracked");
 }
 

@@ -5,7 +5,12 @@ export function trackInterestInHomeExample() {
     product: "web"
   };
 
-  analytics.track.interestInHome(interestInHomeProps);
+  const eventMetadata = {
+    "Additional Property First": "Value 1",
+    "Additional Property Last": "Value 2"
+  };
+
+  analytics.track.interestInHome(interestInHomeProps, eventMetadata);
   console.log("Interest In Home Event Tracked");
 }
 

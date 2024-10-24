@@ -1,51 +1,55 @@
 import analytics, { InitConfig } from "@reservamos/browser-analytics";
 import {
   trackSearchEventExample,
-  trackSearchWithErrors,
+  trackSearchWithErrors
 } from "./examples/search";
 import {
   trackViewResultsExample,
-  trackViewResultsWithErrors,
+  trackViewResultsWithErrors
 } from "./examples/viewResults";
 import {
   trackSeatChangeExample,
-  trackSeatChangeWithErrors,
+  trackSeatChangeWithErrors
 } from "./examples/seatChange";
 import {
   trackInterestInHomeExample,
-  trackInterestInHomeWithErrors,
+  trackInterestInHomeWithErrors
 } from "./examples/interestInHome";
 import {
   trackInterestInSearchExample,
-  trackInterestInSearchWithErrors,
+  trackInterestInSearchWithErrors
 } from "./examples/interestInSearch";
 
 import {
   trackPurchaseAttemptEventExample,
-  trackPurchaseAttemptWithErrors,
+  trackPurchaseAttemptWithErrors
 } from "./examples/purchaseAttempt";
 import { identifyExample, identifyWithErrors } from "./examples/identify";
 import {
   trackPickedDepartureEventExample,
-  trackPickedDepartureWithErrors,
+  trackPickedDepartureWithErrors
 } from "./examples/pickedDeparture";
 import {
   trackPassengersCreatedEventExample,
-  trackPassengersCreatedWithErrors,
+  trackPassengersCreatedWithErrors
 } from "./examples/passengersCreated";
 import {
   trackPaymentAttemptEventExample,
-  trackPaymentAttemptWithErrors,
+  trackPaymentAttemptWithErrors
 } from "./examples/paymentAttempt";
 import { getFingerprintIdExample } from "./examples/getFingerprintId";
 import { getDistinctIdExample } from "./examples/getDistinctId";
 import { customEventExample } from "./examples/customEvent";
+import {
+  trackPurchaseCanceledEventExample,
+  trackPurchaseCanceledWithErrors
+} from "./examples/purchaseCanceled";
 
 const config: InitConfig = {
   mixpanelToken: import.meta.env.VITE_ANALYTICS_MIXPANEL_TOKEN || "",
   identificationKey: import.meta.env.VITE_ANALYTICS_IDENTIFICATION_KEY || "",
   debug: import.meta.env.VITE_ANALYTICS_DEBUG === "true",
-  isSandbox: import.meta.env.VITE_ANALYTICS_IS_SANDBOX === "true",
+  isSandbox: import.meta.env.VITE_ANALYTICS_IS_SANDBOX === "true"
 };
 
 analytics.init(config);
@@ -89,6 +93,9 @@ window.addEventListener("Tracker Ready", async () => {
   //Picked Departure
   trackPickedDepartureEventExample();
 
+  //Purchase Canceled
+  trackPurchaseCanceledEventExample();
+
   // custom event example
   customEventExample();
 
@@ -121,4 +128,7 @@ window.addEventListener("Tracker Ready", async () => {
 
   // Failing to Payment Attempt
   trackPaymentAttemptWithErrors();
+
+  // Failing to Purchase Canceled
+  trackPurchaseCanceledWithErrors();
 });

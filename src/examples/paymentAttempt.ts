@@ -3,6 +3,7 @@ import analytics, { PaymentAttemptProps } from "@reservamos/browser-analytics";
 export function trackPaymentAttemptEventExample() {
   const paymentAttemptProps: PaymentAttemptProps = {
     "Passenger Count": 2,
+    "Operation Id": "OID-123456",
     Total: 520,
     product: "web",
     "Trip Count": 2,
@@ -54,7 +55,12 @@ export function trackPaymentAttemptEventExample() {
     "Payment Type": "card"
   };
 
-  analytics.track.paymentAttempt(paymentAttemptProps);
+  const eventMetadata = {
+    "Metadata Property 1": "Metadata Value 1",
+    "Metadata Property 2": "Metadata Value 2"
+  };
+
+  analytics.track.paymentAttempt(paymentAttemptProps, eventMetadata);
   console.log("paymentAttempt Event Tracked");
 }
 
