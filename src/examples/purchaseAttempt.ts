@@ -3,6 +3,7 @@ import analytics, { PurchaseAttemptProps } from "@reservamos/browser-analytics";
 export function trackPurchaseAttemptEventExample() {
   const PurchaseAttemptProps: PurchaseAttemptProps = {
     "Passenger Count": 2,
+    "Operation Id": "OID-123456",
     Total: 250,
     product: "web",
     "Trip Count": 2,
@@ -53,7 +54,12 @@ export function trackPurchaseAttemptEventExample() {
     ]
   };
 
-  analytics.track.purchaseAttempt(PurchaseAttemptProps);
+  const eventMetadata = {
+    "Metadata Property 1": "Metadata Value 1",
+    "Metadata Property 2": "Metadata Value 2"
+  };
+
+  analytics.track.purchaseAttempt(PurchaseAttemptProps, eventMetadata);
   console.log("purchaseAttempt Event Tracked");
 }
 
