@@ -52,7 +52,10 @@ export function trackPaymentAttemptEventExample() {
         "Return Transporter": "American Airlines"
       }
     ],
-    "Payment Type": "card"
+    "Payment Type": "card",
+    Insurance: true, // optional value
+    Coupon: "DISCOUNT10", // optional value
+    "User Status": "GUEST" // GUEST, LOGGED, NEW_USER
   };
 
   const eventMetadata = {
