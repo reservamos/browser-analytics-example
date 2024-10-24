@@ -1,10 +1,10 @@
 import analytics, {
-  PassengersCreatedProps
+  PassengersCreatedProps,
 } from "@reservamos/browser-analytics";
 
 export function trackPassengersCreatedEventExample() {
   const passengersCreatedProps: PassengersCreatedProps = {
-    "Passenger Count": 2,
+    "Passenger Count": 5,
     Total: 400,
     product: "web",
     "Trip Count": 2,
@@ -23,7 +23,7 @@ export function trackPassengersCreatedEventExample() {
         "Departure Transport Type": "Airplane",
         "Departure Transporter": "American Airlines",
         "Recommended Trip": false,
-        "Recommended Trip Type": "popular" // optional value
+        "Recommended Trip Type": "popular", // optional value
       },
       {
         "Departure Arrival": "2024-10-15",
@@ -50,21 +50,51 @@ export function trackPassengersCreatedEventExample() {
         "Return Route": "LAX-JFK",
         "Return Time": "2024-10-20T10:00:00",
         "Return Transport Type": "Airplane",
-        "Return Transporter": "American Airlines"
-      }
+        "Return Transporter": "American Airlines",
+      },
     ],
     Passengers: [
       {
-        "Passenger Name": "John Doe",
+        "Passenger Name": "Jhon Doe",
+        "Passenger Document Type": "DOC",
+        "Passenger Document Id": "1233",
+        "Passenger Birthdate": "1992-10-22",
+        "Passenger Seat": "2",
+      },
+      {
+        "Passenger Name": "Dylan",
+        "Passenger Document Type": "RG",
+        "Passenger Document Id": "1234",
+        "Passenger Birthdate": "1992-11-22",
+        "Passenger Seat": "1",
+      },
+      {
+        "Passenger Name": "Fanny",
+        "Passenger Document Type": "Passaporte",
+        "Passenger Document Id": "1235",
+        "Passenger Birthdate": "2000-10-22",
+        "Passenger Seat": "3",
+      },
+      {
+        "Passenger Name": "James",
+        "Passenger Document Type": "Doc",
+        "Passenger Document Id": "1236",
+        "Passenger Birthdate": "2002-10-22",
+        "Passenger Seat": "4",
+      },
+      {
+        "Passenger Name": "Steve Cho",
         "Passenger Document Type": "CPF",
-        "Passenger Document Id": "123456789"
-      }
-    ]
+        "Passenger Document Id": "1237",
+        "Passenger Birthdate": "1998-08-22",
+        "Passenger Seat": "6",
+      },
+    ],
   };
 
   const eventMetadata = {
     "Metadata Property 1": "Metadata Value 1",
-    "Metadata Property 2": "Metadata Value 2"
+    "Metadata Property 2": "Metadata Value 2",
   };
 
   analytics.track.passengersCreated(passengersCreatedProps, eventMetadata);
@@ -91,7 +121,7 @@ export function trackPassengersCreatedWithErrors() {
         "Departure Time": "2024-10-13", // Error: Missing time component
         "Departure Transport Type": "Transport type 1",
         "Departure Transporter": "Transporter 1",
-        "Recommended Trip": "yes" // Error: Should be a boolean, not a string
+        "Recommended Trip": "yes", // Error: Should be a boolean, not a string
       },
       {
         "Departure Arrival": "2024-10-15",
@@ -118,9 +148,9 @@ export function trackPassengersCreatedWithErrors() {
         "Return Stops": "0", // Error: Should be a number, not a string
         "Return Time": "2024-10-20", // Error: Missing time component
         "Return Transport Type": "Airplane",
-        "Return Transporter": "American Airlines"
-      }
-    ]
+        "Return Transporter": "American Airlines",
+      },
+    ],
   };
 
   console.log("passengersCreated Event with Errors");
