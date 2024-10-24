@@ -10,7 +10,8 @@ export function trackSearchEventExample() {
     Passengers: 1,
     Route: "acb - def",
     product: "web",
-    "Destination Terminal": "abc"
+    "Destination Terminal": "abc",
+    Categories: ["category 1", "category 2"],
   };
 
   analytics.track.search(searchProps);
@@ -27,7 +28,7 @@ export function trackSearchWithErrors() {
     Passengers: 1,
     Route: "acb - def",
     product: "web",
-    "Destination Terminal": "abc"
+    "Destination Terminal": "abc",
   };
 
   console.log("Search Event with Errors");
