@@ -14,7 +14,12 @@ export function trackViewResultsExample() {
     "Destination Terminal": "abc"
   };
 
-  analytics.track.viewResults(viewResultsProps);
+  const eventMetadata = {
+    Line: "Example Line", // empresa transportadora
+    "Service Type": "Example Service Type" // tipo de servicio
+  };
+
+  analytics.track.viewResults(viewResultsProps, eventMetadata);
   console.log("View Results Event Tracked");
 }
 

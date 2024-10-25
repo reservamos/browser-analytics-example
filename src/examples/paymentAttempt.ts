@@ -59,8 +59,8 @@ export function trackPaymentAttemptEventExample() {
   };
 
   const eventMetadata = {
-    "Metadata Property 1": "Metadata Value 1",
-    "Metadata Property 2": "Metadata Value 2"
+    "Insurance Value": 10, // optional value
+    Installments: 3 // pagamento no cartão parcelado - quantidade de parcelas
   };
 
   analytics.track.paymentAttempt(paymentAttemptProps, eventMetadata);
