@@ -44,6 +44,10 @@ import {
   trackPurchaseCanceledEventExample,
   trackPurchaseCanceledWithErrors
 } from "./examples/purchaseCanceled";
+import { 
+  trackGeolocationSelectedExample,
+  trackGeolocationSelectedWithErrors
+} from "./examples/geolocationSelected";
 
 const config: InitConfig = {
   mixpanelToken: import.meta.env.VITE_ANALYTICS_MIXPANEL_TOKEN || "",
@@ -73,7 +77,7 @@ window.addEventListener("Tracker Ready", async () => {
   trackInterestInSearchExample();
 
   // Identifying a user
-  identifyExample();
+   identifyExample();
 
   // Get Fingerprint ID
   getFingerprintIdExample();
@@ -95,6 +99,9 @@ window.addEventListener("Tracker Ready", async () => {
 
   //Purchase Canceled
   trackPurchaseCanceledEventExample();
+
+  //Geolocation Selected
+   trackGeolocationSelectedExample();
 
   // custom event example
   customEventExample();
@@ -131,4 +138,7 @@ window.addEventListener("Tracker Ready", async () => {
 
   // Failing to Purchase Canceled
   trackPurchaseCanceledWithErrors();
+
+  // Failing to Geolocation Selected event
+  trackGeolocationSelectedWithErrors();
 });
